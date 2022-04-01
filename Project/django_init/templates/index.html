@@ -1,0 +1,66 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://bootswatch.com/5/darkly/bootstrap.min.css">
+    
+    <title>Document</title>
+</head>
+<body>
+
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+          <a class="navbar-brand " routerLink="/">Django Web MVC</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-md-auto">
+              
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'crear_persona' %}"> Add</a>
+              </li>
+            
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+
+
+    <br>
+    
+    <div class="container" align="center">
+    <h1>Template listado</h1>
+    <br>
+    <div class="card" style="width: 38rem;">
+        <table  class="table table-hover" border="2">
+            <thead>
+                <tr class="table-primary">
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Correo</th>
+                    <th>Opcion</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for persona in object_list %}
+                <tr>
+                    <td> {{ persona.nombre }} </td>
+                    <td> {{ persona.apellido }} </td>
+                    <td> {{ persona.correo }} </td>
+                    <td> <a href="{% url 'editar_persona' persona.id %}">Editar</a> <a>/</a> <a href="{% url 'eliminar_persona' persona.id %}">Eliminar</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+      </div>
+    </div>
+    
+</body>
+</html>
